@@ -10,7 +10,16 @@ import os
 import json
 
 app = FastAPI()
-client = MongoClient(json.load(open("config.json"))["mongoURL"],
+
+if "mongoURL" in os.environ:
+    url = os.environ["mongoURL"]
+
+try:
+    url = json.load(open("config.json"))["mongoURL"]
+except:
+    Exception("No valid DB connection configured")
+
+client = MongoClient(url,
                      ssl_ca_certs=certifi.where())
 db = client.testdb
 collection = db.testcollection
