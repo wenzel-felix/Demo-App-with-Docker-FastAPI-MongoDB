@@ -1,0 +1,1 @@
+{"mongoURL": "mongodb+srv://<user>:<password>@<clustername>.dybhx.mongodb.net/<database>?retryWrites=true&w=majority"}
